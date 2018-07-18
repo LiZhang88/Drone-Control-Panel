@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="778.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UIController">
+   <top>
+      <MenuBar fx:id="Menu_Bar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="Menu_Camera" mnemonicParsing="false" onAction="#Switch_Stage" text="Camera " />
+                  <MenuItem fx:id="Menu_NetTest" mnemonicParsing="false" onAction="#Switch_Stage" text="NetTest" />
+                  <MenuItem fx:id="Menu_Jperf" mnemonicParsing="false" onAction="#Switch_Stage" text="Jperf" />
+              <MenuItem fx:id="Menu_Close" mnemonicParsing="false" onAction="#On_Menu_Close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Net Test Page" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <GridPane prefHeight="466.0" prefWidth="714.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="241.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="0.0" prefWidth="33.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="370.0" minWidth="10.0" prefWidth="114.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="212.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="139.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="180.0" minHeight="10.0" prefHeight="180.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="NetFlow:" />
+                  <Label fx:id="Net_Flow" alignment="BOTTOM_CENTER" text="NetFlow Num" GridPane.halignment="RIGHT" />
+                  <Button fx:id="Net_Btn" alignment="CENTER" mnemonicParsing="false" onAction="#get_net" text="Start Net Flow Test" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <TextField fx:id="Ip_Addr" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label text="IP:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Label fx:id="Ping_Num" text="Delay ms" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Label text="Delay" GridPane.rowIndex="2" />
+                  <Button fx:id="Delay_Btn" mnemonicParsing="false" onAction="#get_ping" text="Start Delay Test" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <LineChart fx:id="net_chart" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <LineChart fx:id="ping_chart" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

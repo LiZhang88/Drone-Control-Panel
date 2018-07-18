@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UIController">
+   <top>
+      <MenuBar fx:id="Menu_Bar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="Menu_Camera" mnemonicParsing="false" onAction="#Switch_Stage" text="Camera " />
+                  <MenuItem fx:id="Menu_NetTest" mnemonicParsing="false" onAction="#Switch_Stage" text="NetTest" />
+                  <MenuItem fx:id="Menu_Jperf" mnemonicParsing="false" onAction="#Switch_Stage" text="Jperf" />
+              <MenuItem fx:id="Menu_Close" mnemonicParsing="false" onAction="#On_Menu_Close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="JPerf Page" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <LineChart fx:id="J_chart" prefHeight="200.0" prefWidth="200.0" title="JPerf Diagram" BorderPane.alignment="CENTER">
+              <xAxis>
+                <CategoryAxis animated="false" label="second (s)" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis animated="false" label="bandwidth (Mbit/s)" side="LEFT" />
+              </yAxis>
+            </LineChart>
+         </bottom>
+         <right>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="Jperf_Btn" mnemonicParsing="false" onAction="#Jperf" prefWidth="100.0" text="Start JPerf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Server Address" />
+                  <Label text="transmit" GridPane.rowIndex="1" />
+                  <Label text="bandwidth" GridPane.rowIndex="2" />
+                  <Label GridPane.columnIndex="2" />
+                  <Label text="times" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="Mbit/sec" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="J_add" alignment="CENTER_RIGHT" promptText="127.0.0.1" GridPane.columnIndex="1" />
+                  <TextField fx:id="J_trans" alignment="CENTER_RIGHT" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="J_band" alignment="CENTER_RIGHT" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </right>
+         <left>
+            <TextArea fx:id="Jperf_text" editable="false" prefHeight="358.0" prefWidth="499.0" wrapText="true" BorderPane.alignment="CENTER" />
+         </left>
+      </BorderPane>
+   </center>
+</BorderPane>
